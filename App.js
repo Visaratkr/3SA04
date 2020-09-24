@@ -1,23 +1,36 @@
-//import liraries
-import React, { Component } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Weather from './components/Weather'
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, View } from 'react-native';
+import Weather from './components/Weather';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ZipCodeScreen from './components/ZipCodeScreen';
+import WeatherScreen from './components/WeatherScreen';
 
-// create a component
-const App = () => {
+const Stack = createStackNavigator();
+
+export default function App() {
+
   return (
     <View style={styles.container}>
-      <Weather zipCode="82000"/> 
+      <NavigationContainer>
+        <Stack.Navigator>
+
+          
+          <Stack.Screen name="Home" component={ZipCodeScreen} />
+          <Stack.Screen name="Weather" component={WeatherScreen} />
+
+
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>
   );
-};
 
-// define your styles
+}
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-});
-
-//make this component available to the app
-export default App;
+})

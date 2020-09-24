@@ -30,7 +30,7 @@ export default function Weather(props) {
         }
     }, [props.zipCode])
 
-
+    
     return (
         <View>
             <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
